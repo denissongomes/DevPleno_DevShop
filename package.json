@@ -1,0 +1,26 @@
+{
+  "name": "devpleno_devshop",
+  "version": "1.0.0",
+  "description": "eCommerce DevShop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denissongomes/DevPleno_DevShop.git"
+  },
+  "keywords": [
+    "ecommerce"
+  ],
+  "author": "Denisson Gomes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/denissongomes/DevPleno_DevShop/issues"
+  },
+  "homepage": "https://github.com/denissongomes/DevPleno_DevShop#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
