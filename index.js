@@ -7,7 +7,7 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => {
 
-    res.send('DevShop Test')
+    res.render('home')
 
 })
 
