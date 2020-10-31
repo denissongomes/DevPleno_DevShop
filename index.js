@@ -4,8 +4,9 @@ const port = process.env.PORT || 3000
 const category = require('./models/category.js')
 const product = require('./models/product.js')
 
-const categories = require('./controllers/categories.js')
-const products = require('./controllers/products.js')
+const categories = require('./controllers/categories')
+const products = require('./controllers/products')
+
 
 const db = require('knex')({
     client: 'mysql2',
@@ -33,9 +34,7 @@ app.use(async(req, res, next) => {
     next()
 })
 
-app.get('/', async(req, res) => {
-    res.render('home')
-})
+app.get('/', home.getIndex)
 
 
 app.get('/categoria/:id/:slug', categories.getCategories(db))
