@@ -2,8 +2,6 @@ const express = require('express')
 const app =  express ()
 const port = process.env.PORT || 3000
 const category = require('./models/category')
-const product = require('./models/product')
-
 
 const routes = require('./routes')
 
