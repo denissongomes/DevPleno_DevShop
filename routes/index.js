@@ -1,9 +1,14 @@
 const init = db => {
+    const home = require('../controllers/home')
+
     const categories = require('./categories')
     const products = require('./products')
+    
     const router = require('express').Router()
+    router.get('/', home.getIndex)
     router.use(categories(db))
     router.use(products(db))
+   
     return router
 }
 
