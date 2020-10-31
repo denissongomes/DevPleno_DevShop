@@ -1,9 +1,8 @@
 const init = db => {
     const router = require('express').Router()
-    const categories = require('../controller/categories')
+    const categories = require('../controllers/categories')
     router.get('/categoria/:id/:slug', categories.getCategories(db))
     return router
 }
-
 
 module.exports = init
