@@ -37,7 +37,7 @@ app.use(async(req, res, next) => {
 app.get('/', home.getIndex)
 
 
-app.get('/categoria/:id/:slug', categories.getCategories(db))
+
 
 app.get('/produto/:id/:slug', products.getProduct(db))
 
