@@ -1,12 +1,14 @@
 const express = require('express')
 const app =  express ()
 const port = process.env.PORT || 3000
-const category = require('./models/category.js')
-const product = require('./models/product.js')
+const category = require('./models/category')
+const product = require('./models/product')
 
 const categories = require('./controllers/categories')
 const products = require('./controllers/products')
 const home = require('./controllers/home')
+
+const catRouter = require('./routes/categories')
 
 const db = require('knex')({
     client: 'mysql2',
