@@ -1,6 +1,3 @@
-const app = require('./app')
-
-const port = process.env.PORT || 3000
 const db = require('knex')({
     client: 'mysql2',
     connection: {
@@ -14,6 +11,10 @@ const db = require('knex')({
 db.on('query', query => {
     console.log('SQL: ', query.sql)
 })
+
+const app = require('./app')(db)
+
+const port = process.env.PORT || 3000
 
 app.listen(port, (err) => {
     if(err){
