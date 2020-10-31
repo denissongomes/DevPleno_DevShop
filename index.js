@@ -20,6 +20,13 @@ db.on('query', query => {
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
+const getCategoriesById = async(id) => {
+    const category = await db('categories')
+                            .select('*')
+                            .where('id', id)
+    return category
+}
+
 const getCategories = async() => {
     const categories = await db('categories').select('*')
     const categoriesWithSlug = categories.map( category => {
@@ -49,7 +56,7 @@ app.get('/', async(req, res) => {
 app.get('/categoria/:id/:slug', async(req, res) => {
     const categories = await getCategories()
     const products = await getProductsByCategoryId(req.params.id)
-    const category = await db('categories').select('*').where('id', req.params.id)
+    const category = await getCategoriesById(req.params.id)
     res.render('category', {
         products,
         categories,
