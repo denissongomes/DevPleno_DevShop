@@ -7,7 +7,7 @@ const init = db => {
     const router = require('express').Router()
     router.get('/', home.getIndex)
     router.use('/categoria', categories(db))
-    router.use(products(db))
+    router.use('/produto',products(db))
    
     return router
 }
