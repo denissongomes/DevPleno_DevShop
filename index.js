@@ -22,18 +22,22 @@ app.use(express.static('public'))
 
 app.get('/', async(req, res) => {
 const categories = await db('categories').select('*')
-const categoriasWithSlug = categories.map( category => {
+const categoriesWithSlug = categories.map( category => {
     const newCategory = { ...category, slug: slug(category.category) }
     return newCategory
 })
-console.log(categoriasWithSlug)
+ 
     res.render('home', {
-        categories: categoriasWithSlug
+        categories: categoriesWithSlug
     })
 })
 
-app.get('/categoria/:id', async(req, res) => {
+app.get('/categoria/:id/:slug', async(req, res) => {
     const categories = await db('categories').select('*')
+    const categoriesWithSlug = categories.map( category => {
+        const newCategory = { ...category, slug: slug(category.category) }
+        return newCategory
+    })
     const products = await db('products').select('*').whereIn('id', function () {
         this
             .select('categories_products.product_id')
@@ -42,7 +46,7 @@ app.get('/categoria/:id', async(req, res) => {
     })
     res.render('category', {
         products,
-        categories
+        categories: categoriesWithSlug
     })
 })
 
