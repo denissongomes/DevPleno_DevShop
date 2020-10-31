@@ -30,7 +30,7 @@ app.get('/', async(req, res) => {
 
 app.get('/categoria/:id/:slug', async(req, res) => {
     const categories = await category.getCategories(db)()
-    const products = await product.getProductsByCategoryId(req.params.id)
+    const products = await product.getProductsByCategoryId(db)(req.params.id)
     const cat = await category.getCategoriesById(db)(req.params.id)
     res.render('category', {
         products,
