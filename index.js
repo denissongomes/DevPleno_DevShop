@@ -7,10 +7,12 @@ const db = require('knex')({
     connection: {
         host: '127.0.0.1',
         user: 'root',
-        pasword: '',
+        password: '',
         database: 'devshop'
     }
 })
+
+
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
