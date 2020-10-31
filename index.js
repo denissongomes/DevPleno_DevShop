@@ -6,7 +6,7 @@ const product = require('./models/product.js')
 
 const categories = require('./controllers/categories')
 const products = require('./controllers/products')
-
+const home = require('./controllers/home')
 
 const db = require('knex')({
     client: 'mysql2',
