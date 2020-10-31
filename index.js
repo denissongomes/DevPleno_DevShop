@@ -44,7 +44,7 @@ app.get('/categoria/:id/:slug', async(req, res) => {
     res.render('category', {
         products,
         categories,
-        cat
+        category: cat
     })
 })
 
