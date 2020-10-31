@@ -1,3 +1,4 @@
+const slug = require('../utils/slug')
 
 const getCategoriesById = db => async(id) => {
     const category = await db('categories')
