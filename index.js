@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000
 const category = require('./models/category.js')
 const product = require('./models/product.js')
 
+const categories = require('./controllers/categories.js')
+
 const db = require('knex')({
     client: 'mysql2',
     connection: {
