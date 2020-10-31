@@ -38,7 +38,7 @@ app.use(async(req, res, next) => {
 
 app.get('/', home.getIndex)
 
-
+app.use(catRouter(db))
 
 
 app.get('/produto/:id/:slug', products.getProduct(db))
