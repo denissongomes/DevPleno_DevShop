@@ -2,6 +2,7 @@ const express = require('express')
 const app =  express ()
 const port = process.env.PORT || 3000
 const slug = require('./utils/slug')
+const category = require('./models/category.js')
 
 const db = require('knex')({
     client: 'mysql2',
