@@ -5,6 +5,7 @@ const category = require('./models/category.js')
 const product = require('./models/product.js')
 
 const categories = require('./controllers/categories.js')
+const products = require('./controllers/products.js')
 
 const db = require('knex')({
     client: 'mysql2',
@@ -39,14 +40,7 @@ app.get('/', async(req, res) => {
 
 app.get('/categoria/:id/:slug', categories.getCategories(db))
 
-app.get('/produto/:id/:slug', async(req,res) =>{
-    const categories = await category.getCategories(db)()
-    const prod = await product.getProductsById(db)(req.params.id)
-    res.render('product-detail', {
-        product: prod,
-        
-    })
-})
+app.get('/produto/:id/:slug', products.getProduct(db))
 
 app.listen(port, (err) => {
     if(err){
