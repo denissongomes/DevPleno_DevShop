@@ -34,8 +34,7 @@ app.use(async(req, res, next) => {
 })
 
 app.get('/', home.getIndex)
-
-
+app.use(routes(db))
 
 app.listen(port, (err) => {
     if(err){
