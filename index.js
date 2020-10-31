@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 const category = require('./models/category')
 const product = require('./models/product')
 
-const categories = require('./controllers/categories')
+ 
 const products = require('./controllers/products')
 const home = require('./controllers/home')
 
