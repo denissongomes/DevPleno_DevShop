@@ -7,6 +7,4 @@ const init = db => {
     return router
 }
 
-module.exports = {
-    init
-}
+module.exports =  init
