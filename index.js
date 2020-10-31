@@ -44,9 +44,11 @@ app.get('/categoria/:id/:slug', async(req, res) => {
             .from('categories_products')
             .where('category_id', req.params.id)
     })
+    const category = await db('categories').select('*').where('id', req.params.id)
     res.render('category', {
         products,
-        categories: categoriesWithSlug
+        categories: categoriesWithSlug,
+        category
     })
 })
 
