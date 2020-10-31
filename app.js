@@ -17,6 +17,7 @@ const init = db => {
         next()
     })
     app.use(routes(db))
+    return app
 }
 
 module.exports = init
