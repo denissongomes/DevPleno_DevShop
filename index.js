@@ -1,6 +1,7 @@
 const express = require('express')
 const app =  express ()
 const port = process.env.PORT || 3000
+const slug = require('./utils/slug')
 
 const db = require('knex')({
     client: 'mysql2',
@@ -21,7 +22,14 @@ app.use(express.static('public'))
 
 app.get('/', async(req, res) => {
 const categories = await db('categories').select('*')
-    res.render('home', {categories})
+const categoriasWithSlug = categories.map( category => {
+    const newCategory = { ...category, slug: slug(category.category) }
+    return newCategory
+})
+console.log(categoriasWithSlug)
+    res.render('home', {
+        categories: categoriasWithSlug
+    })
 })
 
 app.get('/categoria/:id', async(req, res) => {
