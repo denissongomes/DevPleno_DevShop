@@ -8,7 +8,7 @@ const product = require('./models/product')
 const products = require('./controllers/products')
 const home = require('./controllers/home')
 
-const catRouter = require('./routes/categories')
+const categories = require('./routes/categories')
 
 const db = require('knex')({
     client: 'mysql2',
@@ -38,7 +38,7 @@ app.use(async(req, res, next) => {
 
 app.get('/', home.getIndex)
 
-app.use(catRouter(db))
+app.use(categories(db))
 
 
 app.get('/produto/:id/:slug', products.getProduct(db))
