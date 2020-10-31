@@ -12,7 +12,9 @@ const db = require('knex')({
     }
 })
 
-
+db.on('query', query => {
+    console.log('SQL: ', query.sql)
+})
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
