@@ -25,13 +25,17 @@ const categories = await db('categories').select('*')
 })
 
 app.get('/categoria/:id', async(req, res) => {
+    const categories = await db('categories').select('*')
     const products = await db('products').select('*').whereIn('id', function () {
         this
             .select('categories_products.product_id')
             .from('categories_products')
             .where('category_id', req.params.id)
     })
-    res.send(products)
+    res.render('category', {
+        products,
+        categories
+    })
 })
 
 app.listen(port, (err) => {
