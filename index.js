@@ -20,16 +20,6 @@ db.on('query', query => {
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-const getProductsByCategoryId = async(id) => {
-    const products = await db('products').select('*').whereIn('id', function () {
-        this
-            .select('categories_products.product_id')
-            .from('categories_products')
-            .where('category_id', id)
-    })
-    return products
-}
-
 app.get('/', async(req, res) => {
     const categories = await category.getCategories(db)()
     res.render('home', {
