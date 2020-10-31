@@ -20,15 +20,19 @@ db.on('query', query => {
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-app.get('/', async(req, res) => {
-const categories = await db('categories').select('*')
-const categoriesWithSlug = categories.map( category => {
+const getCategories = async() => {
+    const categories = await db('categories').select('*')
+    const categoriesWithSlug = categories.map( category => {
     const newCategory = { ...category, slug: slug(category.category) }
     return newCategory
 })
- 
+return categoriesWithSlug
+}
+
+app.get('/', async(req, res) => {
+    const categories = getCategories()
     res.render('home', {
-        categories: categoriesWithSlug
+        categories 
     })
 })
 
