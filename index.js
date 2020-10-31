@@ -15,10 +15,9 @@ const db = require('knex')({
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-
-    res.render('home')
-
+app.get('/', async(req, res) => {
+const categories = await db('categories').select('*')
+    res.render('home', {categories})
 })
 
 app.listen(port, (err) => {
