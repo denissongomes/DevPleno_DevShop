@@ -34,16 +34,8 @@ app.get('/', async(req, res) => {
     res.render('home')
 })
 
-app.get('/categoria/:id/:slug', async(req, res) => {
-    const categories = await category.getCategories(db)()
-    const products = await product.getProductsByCategoryId(db)(req.params.id)
-    const cat = await category.getCategoriesById(db)(req.params.id)
-    res.render('category', {
-        products,
-        
-        category: cat
-    })
-})
+
+app.get('/categoria/:id/:slug', getCategories(db))
 
 app.get('/produto/:id/:slug', async(req,res) =>{
     const categories = await category.getCategories(db)()
