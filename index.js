@@ -21,11 +21,17 @@ db.on('query', query => {
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-app.get('/', async(req, res) => {
+//middleware
+app.use(async(req, res, next) => {
     const categories = await category.getCategories(db)()
-    res.render('home', {
-        categories 
-    })
+    res.locals = {
+        categories
+    }
+    next()
+})
+
+app.get('/', async(req, res) => {
+    res.render('home')
 })
 
 app.get('/categoria/:id/:slug', async(req, res) => {
@@ -34,7 +40,7 @@ app.get('/categoria/:id/:slug', async(req, res) => {
     const cat = await category.getCategoriesById(db)(req.params.id)
     res.render('category', {
         products,
-        categories,
+        
         category: cat
     })
 })
@@ -44,7 +50,7 @@ app.get('/produto/:id/:slug', async(req,res) =>{
     const prod = await product.getProductsById(db)(req.params.id)
     res.render('product-detail', {
         product: prod,
-        categories
+        
     })
 })
 
