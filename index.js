@@ -39,6 +39,15 @@ app.get('/categoria/:id/:slug', async(req, res) => {
     })
 })
 
+app.get('/produto/:id/:slug', async(req,res) =>{
+    const categories = await category.getCategories(db)()
+    const prod = await product.getProductsById(db)(req.params.id)
+    res.render('product-detail', {
+        product: prod,
+        categories
+    })
+})
+
 app.listen(port, (err) => {
     if(err){
         console.log('Não foi possível iniciar o servidor')
