@@ -29,6 +29,16 @@ const getCategories = async() => {
 return categoriesWithSlug
 }
 
+const getProductsByCategoryId = async(id) => {
+    const products = await db('products').select('*').whereIn('id', function () {
+        this
+            .select('categories_products.product_id')
+            .from('categories_products')
+            .where('category_id', id)
+    })
+    return products
+}
+
 app.get('/', async(req, res) => {
     const categories = await getCategories()
     res.render('home', {
@@ -38,12 +48,7 @@ app.get('/', async(req, res) => {
 
 app.get('/categoria/:id/:slug', async(req, res) => {
     const categories = await getCategories()
-    const products = await db('products').select('*').whereIn('id', function () {
-        this
-            .select('categories_products.product_id')
-            .from('categories_products')
-            .where('category_id', req.params.id)
-    })
+    const products = await getProductsByCategoryId(req.params.id)
     const category = await db('categories').select('*').where('id', req.params.id)
     res.render('category', {
         products,
