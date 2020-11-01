@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs')
+
 const initialUser =  db => async(id) => {
     //check if there is no users
     const count = await db('users').count('id as total')
