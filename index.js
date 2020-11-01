@@ -16,6 +16,7 @@ const app = require('./app')(db)
 const port = process.env.PORT || 3000
 
 const user = require('./models/user')
+user.initialUser(db)()
 
 app.listen(port, (err) => {
     if(err){
