@@ -9,6 +9,11 @@ const init = db => {
    
     app.use(bodyParser.json({ extended: true}))
     app.use(bodyParser.urlencoded())
+    app.use(session({
+        secret: 'MyDevShopRulez!',
+        name: 'sessionId'
+    }))
+
     app.set('view engine', 'ejs')
     app.use(express.static('public'))
 
