@@ -81,6 +81,25 @@ $(document).ready(function() {
 					</div>
 				</a>
 			</div> <!-- widget .// -->
+			<% if(user){ %> 
+				<div class="widget-header dropdown">
+					<a href="#" class="ml-3 icontext" data-toggle="dropdown" data-offset="20,10">
+						<div class="icon-wrap icon-xs bg2 round text-secondary"><i class="fa fa-user"></i></div>
+						<div class="text-wrap">
+							 
+							<span><%- user.name %><i class="fa fa-caret-down"></i></span>
+						</div>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="#">Foods and Drink</a>
+							<a class="dropdown-item" href="#">Home interior</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Category 1</a>
+							<a class="dropdown-item" href="#">Category 2</a>
+							<a class="dropdown-item" href="#">Category 3</a>
+							</div>
+					</div> <!--  dropdown-menu .// -->
+		<% } else { %>
 			<div class="widget-header dropdown">
 				<a href="#" class="ml-3 icontext" data-toggle="dropdown" data-offset="20,10">
 					<div class="icon-wrap icon-xs bg2 round text-secondary"><i class="fa fa-user"></i></div>
@@ -105,6 +124,7 @@ $(document).ready(function() {
 						<a class="dropdown-item" href="#">Have account? Sign up</a>
 						<a class="dropdown-item" href="#">Forgot password?</a>
 				</div> <!--  dropdown-menu .// -->
+				<% } %>
 			</div> <!-- widget  dropdown.// -->
 		</div>	<!-- widgets-wrap.// -->	
 	</div> <!-- col.// -->
