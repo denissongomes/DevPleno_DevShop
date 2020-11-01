@@ -20,8 +20,10 @@ const init = db => {
     //middleware
     app.use(async(req, res, next) => {
         const categories = await category.getCategories(db)()
+        const { user } = req.session
         res.locals = {
-            categories
+            categories, 
+            user
         }
         next()
     })
