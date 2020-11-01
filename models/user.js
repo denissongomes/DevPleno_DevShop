@@ -36,7 +36,7 @@ const login = db => async(email, passwd) => {
         throw new Error('Invalid user.2')
     }
 
-    return user
+    return user[0]
 
 }
 
