@@ -31,6 +31,11 @@ const login = db => async(email, passwd) => {
    if (user.length === 0){
        throw new Error('Invalid user.')
    }
+    
+    if(!bcrypt.compareSync(passwd, user[0].passwd)){
+        throw new Error('Invalid user.2')
+    }
+
     return user
 
 }
