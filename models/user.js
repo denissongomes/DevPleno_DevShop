@@ -14,7 +14,7 @@ const initialUser =  db => async(id) => {
         const user = {
             name: 'Admin',
             email: 'admin@devshop.com',
-            passwd: generatedPassHash('Admin'),
+            passwd: generatedPassHash('admin'),
             email_checked: true,
             roles: 'admin, financial, customer',
             created: new Date(),
