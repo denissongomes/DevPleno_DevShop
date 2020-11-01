@@ -5,6 +5,7 @@ const init = db => {
     const category = require('./models/category')
     const routes = require('./routes')
     const bodyParser = require('body-parser')
+    const session = require('express-session')
    
     app.use(bodyParser.json({ extended: true}))
     app.use(bodyParser.urlencoded())
