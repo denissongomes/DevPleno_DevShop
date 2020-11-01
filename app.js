@@ -4,7 +4,10 @@ const init = db => {
 
     const category = require('./models/category')
     const routes = require('./routes')
-
+    const bodyParser = require('body-parser')
+   
+    app.use(bodyParser.json({ extended: true}))
+    app.use(bodyParser.urlencoded())
     app.set('view engine', 'ejs')
     app.use(express.static('public'))
 
