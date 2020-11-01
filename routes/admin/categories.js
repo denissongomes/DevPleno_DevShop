@@ -1,7 +1,7 @@
 const init = db => {
     const router = require('express').Router()
     const categories = require('../../controllers/categories')
-    router.get('/', categories.getCategories(db))
+    router.get('/', categories.adminGetCategories(db))
     return router
 }
 
