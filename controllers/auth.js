@@ -10,6 +10,15 @@ const login = db => async(req, res) => {
 
 }
 
+const logout = (req, res) => {
+    req.session.destroy(() => {
+        //do nothing
+    })
+    res.redirect('/')
+}
+
+
 module.exports = {
-    login
+    login,
+    logout
 }
