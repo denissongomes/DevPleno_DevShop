@@ -17,3 +17,8 @@ const validate = (obj, schema) => {
         throw new Error({message: 'validation', errors: extractErrors(error)})
     }
 }
+
+module.exports = {
+    extractErrors, 
+    validate
+}
