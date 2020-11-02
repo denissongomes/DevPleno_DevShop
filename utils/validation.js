@@ -17,9 +17,11 @@ const ValidationError = (message, errors) => ({
 })
 
 const validate = (obj, schema) => {
-    const { err, value } = Joy.validate(category, createSchema, { abortEarly: false, stripUnknown: true })
+    const { err, value } = Joy.validate(obj, schema, { abortEarly: false, stripUnknown: true })
     if(error){
         throw ValidationError('validation', extractErrors(error))
+    }else{
+        return value
     }
 }
 
