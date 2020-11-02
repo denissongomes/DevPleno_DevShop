@@ -1,4 +1,5 @@
 const slug = require('../utils/slug')
+const Joi = require('@hapi/joi')
 
 const getCategoriesById = db => async(id) => {
     const category = await db('categories')
