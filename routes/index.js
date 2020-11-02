@@ -10,6 +10,7 @@ const init = db => {
     //auth
     router.get('/', home.getIndex)
     router.post('/login', auth.login(db))
+    router.get('/login', auth.getLoginIndex)
     router.get('/logout', auth.logout)
     
     //routers
