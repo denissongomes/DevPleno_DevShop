@@ -1,4 +1,5 @@
 const slug = require('../utils/slug')
+const validation =  require('../utils/validation')
 const Joi = require('@hapi/joi')
 
 const createSchema = Joi.object().keys({
@@ -23,10 +24,9 @@ return categoriesWithSlug
 }
 
 const createCategory = db => async(category) => {
-    else {
-       await db('categories').insert(value)
-   }
-    
+    const value = validation.validate(category, createSchema)
+    await db('categories').insert(value)
+    return true   
 }
 
 module.exports = {
