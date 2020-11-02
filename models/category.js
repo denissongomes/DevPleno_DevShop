@@ -16,7 +16,12 @@ const getCategories = db => async() => {
 return categoriesWithSlug
 }
 
+const createCategory = db => async(category) => {
+    await db('categories').insert(category)
+}
+
 module.exports = {
     getCategories,
-    getCategoriesById
+    getCategoriesById,
+    createCategory
 }
