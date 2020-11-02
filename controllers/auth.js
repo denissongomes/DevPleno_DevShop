@@ -9,16 +9,19 @@ const login = db => async(req, res) => {
     }
 
 }
-
+const getLoginIndex = (req, res) => {
+    res.render('login')
+} 
 const logout = (req, res) => {
     req.session.destroy(() => {
         //do nothing
     })
-    res.redirect('/')
+    res.redirect('/login')
 }
 
 
 module.exports = {
     login,
+    getLoginIndex,
     logout
 }
