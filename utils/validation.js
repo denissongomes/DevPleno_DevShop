@@ -10,3 +10,10 @@ const extractErrors = error => {
     
 
 }
+
+const validate = (obj, schema) => {
+    const { err, value } = Joy.validate(category, createSchema, { abortEarly: false, stripUnknown: true })
+    if(error){
+        throw new Error({message: 'validation', errors: extractErrors(error)})
+    }
+}
