@@ -2,10 +2,10 @@ const slug = require('../utils/slug')
 const validation =  require('../utils/validation')
 const Joi = require('@hapi/joi')
 
-const createSchema = Joi.object().keys({
-    categories: Joi.string().min(5).max(245).required(),
-    description: Joi.string().min(5).required()
-})
+const schema = Joi.object({ 
+    category: Joi.string().min(5).max(245).required(),
+    description: Joi.string().min(5).required() 
+ });
 
 const getCategoriesById = db => async(id) => {
     const category = await db('categories')
@@ -24,7 +24,7 @@ return categoriesWithSlug
 }
 
 const createCategory = db => async(category) => {
-    const value = validation.validate(category, createSchema)
+    const value = validation.validate(category, schema)   
     await db('categories').insert(value)
     return true   
 }
