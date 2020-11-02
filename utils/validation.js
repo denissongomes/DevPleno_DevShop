@@ -1,3 +1,5 @@
+const Joi = require('@hapi/joi')
+
 const extractErrors = error => {
     return error.details.reduce((prev, curr) => {
         if(prev[curr.path[0]]){
