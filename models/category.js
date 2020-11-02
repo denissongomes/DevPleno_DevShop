@@ -1,6 +1,11 @@
 const slug = require('../utils/slug')
 const Joi = require('@hapi/joi')
 
+const createSchema = Joi.object().keys({
+    categories: Joi.string().min(5).max(245).required(),
+    description: Joi.string().min(5).required()
+})
+
 const getCategoriesById = db => async(id) => {
     const category = await db('categories')
                             .select('*')
