@@ -1,7 +1,7 @@
 const Joi = require('@hapi/joi')
 
 const extractErrors = error => {
-    return error.details.reduce((prev, curr) => {
+    const errors = error.details.reduce((prev, curr) => {
         if(prev[curr.path[0]]){
             prev[curr.path[0]].push(curr.type)
         } else {
@@ -10,6 +10,10 @@ const extractErrors = error => {
         return prev
     }, {})     
     
+    return {
+        errors,
+        fields: Object.keys(errors)
+    }
 
 }
 
