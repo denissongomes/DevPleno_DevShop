@@ -38,7 +38,7 @@ const extractErrors = error => {
 const createCategory = db => async(category) => {
    const { err, value } = Joy.validate(category, createSchema, { abortEarly: false, stripUnknown: true })
    if(error){
-       return extractErrors(error)
+       throw new Error({message: 'validation', errors: extractErrors(error)})
    } else {
        await db('categories').insert(value)
    }
