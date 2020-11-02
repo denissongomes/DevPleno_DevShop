@@ -23,10 +23,7 @@ return categoriesWithSlug
 }
 
 const createCategory = db => async(category) => {
-   const { err, value } = Joy.validate(category, createSchema, { abortEarly: false, stripUnknown: true })
-   if(error){
-       throw new Error({message: 'validation', errors: extractErrors(error)})
-   } else {
+    else {
        await db('categories').insert(value)
    }
     
