@@ -2,19 +2,17 @@ const Joi = require('@hapi/joi')
 
 const extractErrors = error => {
     const errors = error.details.reduce((prev, curr) => {
-        if(prev[curr.path[0]]){
+        if (prev[curr.path[0]]) {
             prev[curr.path[0]].push(curr.type)
         } else {
             prev[curr.path[0]] = [curr.type]
         }
         return prev
-    }, {})     
-    
+    }, {})
     return {
         errors,
         fields: Object.keys(errors)
     }
-
 }
 
 const ValidationError = (message, errors) => ({
